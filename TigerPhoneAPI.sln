@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TigerPhoneAPI", "TigerPhoneAPI.csproj", "{BF4F8E78-BC38-4875-A261-5ABCA8A6C1A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TigerPhoneAPI", "TigerPhoneAPI.csproj", "{BF4F8E78-BC38-4875-A261-5ABCA8A6C1A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-Tests", "..\API-Tests\API-Tests.csproj", "{37576CEC-E174-4B0B-8D8B-AFD744E28BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-Tests", "..\API-Tests\API-Tests.csproj", "{37576CEC-E174-4B0B-8D8B-AFD744E28BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
