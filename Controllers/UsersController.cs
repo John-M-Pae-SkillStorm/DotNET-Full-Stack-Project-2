@@ -40,7 +40,10 @@ namespace TigerPhoneAPI.Controllers
           {
               return NotFound();
           }
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Where(u => u.UserId == id)
+                .Include(u => u.Plans)
+                .FirstAsync();
 
             if (user == null)
             {
@@ -115,6 +118,15 @@ namespace TigerPhoneAPI.Controllers
 
             return NoContent();
         }
+
+        //public async Task<IActionResult> AddPlanToUser(int userId, Plan newPlan)
+        //{
+        //    if (_context.Users == null || !UserExists(userId))
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok("It worked");
+        //}
 
         private bool UserExists(int id)
         {

@@ -6,5 +6,6 @@ namespace TigerPhoneAPI.Models
     {
         [Key]
         public int PlanId { get; set; }
+        public virtual ICollection<Device> Devices { get; set; }
     }
 }

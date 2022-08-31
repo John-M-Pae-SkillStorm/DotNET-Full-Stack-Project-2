@@ -12,13 +12,13 @@ namespace TigerPhoneAPI
             // Add databse context
             builder.Services.AddDbContext<TelecomContext>(opt =>
                 opt.UseSqlServer(
-                    builder.Configuration.GetConnectionString("Default Connection")
+                    builder.Configuration.GetConnectionString("Test Connection")
                     ));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -27,6 +27,7 @@ namespace TigerPhoneAPI
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }

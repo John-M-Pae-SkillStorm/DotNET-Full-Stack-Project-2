@@ -40,7 +40,11 @@ namespace TigerPhoneAPI.Controllers
           {
               return NotFound();
           }
-            var plan = await _context.Plans.FindAsync(id);
+            var plan = await _context.Plans
+                .Where(p => p.PlanId == id)
+                .Include(p => p.Devices)
+                .FirstAsync();
+            //var plan = await _context.Plans.FindAsync(id);
 
             if (plan == null)
             {
