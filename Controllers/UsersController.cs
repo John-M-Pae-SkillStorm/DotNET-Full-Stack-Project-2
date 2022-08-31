@@ -119,6 +119,15 @@ namespace TigerPhoneAPI.Controllers
             return NoContent();
         }
 
+        //public async Task<IActionResult> AddPlanToUser(int userId, Plan newPlan)
+        //{
+        //    if (_context.Users == null || !UserExists(userId))
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok("It worked");
+        //}
+
         private bool UserExists(int id)
         {
             return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
