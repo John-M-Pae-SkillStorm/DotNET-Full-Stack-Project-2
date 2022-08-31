@@ -21,17 +21,6 @@ namespace TigerPhoneAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet(Name = "GetAllUsers")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAll()
-        {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            return await _context.Users.ToListAsync();
-        }
-
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -118,15 +107,6 @@ namespace TigerPhoneAPI.Controllers
 
             return NoContent();
         }
-
-        //public async Task<IActionResult> AddPlanToUser(int userId, Plan newPlan)
-        //{
-        //    if (_context.Users == null || !UserExists(userId))
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok("It worked");
-        //}
 
         private bool UserExists(int id)
         {
