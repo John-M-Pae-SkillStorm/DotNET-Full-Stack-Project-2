@@ -9,11 +9,26 @@ namespace TigerPhoneAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // add cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin();
+                        policy.AllowAnyMethod();
+                        policy.AllowAnyHeader();
+                    });
+            });
+
             // Add databse context
             builder.Services.AddDbContext<TelecomContext>(opt =>
                 opt.UseSqlServer(
                     builder.Configuration.GetConnectionString("Default Connection")
                     ));
+
+            //doug added 31-aug
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             // Add services to the container.
 
@@ -27,14 +42,15 @@ namespace TigerPhoneAPI
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseCors("AllowAll");
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

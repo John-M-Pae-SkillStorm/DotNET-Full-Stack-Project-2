@@ -6,5 +6,7 @@ namespace TigerPhoneAPI.Models
     {
         [Key]
         public int PlanId { get; set; }
+        public string PlanName { get; set; }
+        public int PlanType { get; set; }
     }
 }
