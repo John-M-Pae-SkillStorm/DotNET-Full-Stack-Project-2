@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TigerPhoneAPI.Contexts;
 
@@ -11,9 +12,10 @@ using TigerPhoneAPI.Contexts;
 namespace TigerPhoneAPI.Migrations
 {
     [DbContext(typeof(TelecomContext))]
-    partial class TelecomContextModelSnapshot : ModelSnapshot
+    [Migration("20220831200634_31augChangeModel")]
+    partial class _31augChangeModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,12 +32,12 @@ namespace TigerPhoneAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DeviceId"), 1L, 1);
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("PlanId")
                         .HasColumnType("int");
 
                     b.HasKey("DeviceId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PlanId");
 
                     b.ToTable("Devices");
                 });
@@ -87,9 +89,9 @@ namespace TigerPhoneAPI.Migrations
 
             modelBuilder.Entity("TigerPhoneAPI.Models.Device", b =>
                 {
-                    b.HasOne("TigerPhoneAPI.Models.User", null)
+                    b.HasOne("TigerPhoneAPI.Models.Plan", null)
                         .WithMany("Devices")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("PlanId");
                 });
 
             modelBuilder.Entity("TigerPhoneAPI.Models.Plan", b =>
@@ -99,10 +101,13 @@ namespace TigerPhoneAPI.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("TigerPhoneAPI.Models.User", b =>
+            modelBuilder.Entity("TigerPhoneAPI.Models.Plan", b =>
                 {
                     b.Navigation("Devices");
+                });
 
+            modelBuilder.Entity("TigerPhoneAPI.Models.User", b =>
+                {
                     b.Navigation("Plans");
                 });
 #pragma warning restore 612, 618

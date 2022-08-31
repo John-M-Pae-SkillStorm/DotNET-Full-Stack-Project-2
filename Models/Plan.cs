@@ -8,5 +8,10 @@ namespace TigerPhoneAPI.Models
         public int PlanId { get; set; }
         public string PlanName { get; set; }
         public int PlanType { get; set; }
+        public int PlanPrice { get; set; }
+
+        //public virtual ICollection<Device> Devices { get; set; }
+
+
     }
 }
