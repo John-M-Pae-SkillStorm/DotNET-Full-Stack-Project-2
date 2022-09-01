@@ -12,7 +12,7 @@ namespace TigerPhoneAPI
             // Add databse context
             builder.Services.AddDbContext<TelecomContext>(opt =>
                 opt.UseSqlServer(
-                    builder.Configuration.GetConnectionString("Test Connection")
+                    builder.Configuration.GetConnectionString("Test Connection2")
                     ));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
