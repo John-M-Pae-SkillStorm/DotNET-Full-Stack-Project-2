@@ -9,8 +9,8 @@ namespace TigerPhoneAPI.Models
         public string UserName { get; set; }
         public int PhoneNumber { get; set; }
 
-        public virtual List<Plan> Plans { get; set; }
-        public virtual List<Device> Devices { get; set; }
+        public List<Plan> Plans { get; set; }
+        public Device Device { get; set; }
 
     }
 }

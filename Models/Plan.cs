@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace TigerPhoneAPI.Models
 {
@@ -10,6 +11,8 @@ namespace TigerPhoneAPI.Models
         public int PlanType { get; set; }
         public int PlanPrice { get; set; }
 
+        [JsonIgnore]
+        public List<User> Users { get; set; }
         //public virtual ICollection<Device> Devices { get; set; }
 
 

@@ -43,7 +43,7 @@ namespace TigerPhoneAPI.Controllers
             var user = await _context.Users
                 .Where(u => u.Id == id)
                 .Include(u => u.Plans)
-                .Include(u => u.Devices)
+                .Include(u => u.Device)
                 .ToListAsync();
             if (user == null)
             {
