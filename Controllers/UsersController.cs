@@ -29,7 +29,9 @@ namespace TigerPhoneAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Plans)
+                .ToListAsync();
         }
 
         // GET: api/Users/5
