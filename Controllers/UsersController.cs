@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TigerPhoneAPI.Contexts;
+using TigerPhoneAPI.DataTranferModels;
 using TigerPhoneAPI.Models;
 
 namespace TigerPhoneAPI.Controllers
@@ -87,12 +88,13 @@ namespace TigerPhoneAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(IncomingUser incomgngUser)
         {
           if (_context.Users == null)
           {
               return Problem("Entity set 'TelecomContext.Users'  is null.");
           }
+            User user = incomgngUser.ToDataModel();
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
