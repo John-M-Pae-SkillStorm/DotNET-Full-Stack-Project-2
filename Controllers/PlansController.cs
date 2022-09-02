@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TigerPhoneAPI.Contexts;
+using TigerPhoneAPI.DataTranferModels;
 using TigerPhoneAPI.Models;
 
 namespace TigerPhoneAPI.Controllers
@@ -88,12 +89,13 @@ namespace TigerPhoneAPI.Controllers
         // POST: api/Plans
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Plan>> PostPlan(Plan plan)
+        public async Task<ActionResult<Plan>> PostPlan(IncomingPlan incomingPlan)
         {
           if (_context.Plans == null)
           {
               return Problem("Entity set 'TelecomContext.Plans'  is null.");
           }
+            Plan plan = incomingPlan.ToDataModel();
             _context.Plans.Add(plan);
             await _context.SaveChangesAsync();
 
